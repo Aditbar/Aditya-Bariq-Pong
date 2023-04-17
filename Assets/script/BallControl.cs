@@ -18,14 +18,14 @@ public class BallControl : MonoBehaviour
         // bikin sudut random diawal game
         float randomY = Random.Range(-0.7f, 0.7f);
         int randomStart = Random.Range(0, 2) * 2 - 1;
-        Vector2 initialspeed = new Vector2(randomStart, randomY).normalized * speed;
+        Vector3 initialspeed = new Vector3(randomStart, randomY, 1).normalized * speed;
         rig.velocity = initialspeed;
     }
 
     private void ResetBall()
     {
         float posY = Random.Range(-3f, 3f);
-        Vector2 position = new Vector2(startX, posY);
+        Vector3 position = new Vector3(startX, posY, 1);
         transform.position = position;
     }
 
