@@ -36,9 +36,12 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\script\PaddleRightControl.cs" />
-     <Compile Include="Assets\script\PaddleLeftControl.cs" />
+     <Compile Include="Assets\script\GoalControl.cs" />
+     <Compile Include="Assets\script\PaddleControl.cs" />
+     <Compile Include="Assets\script\MainMenuControl.cs" />
+     <Compile Include="Assets\script\ScoreControl.cs" />
      <Compile Include="Assets\script\BallControl.cs" />
+     <Compile Include="Assets\script\ScoreManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity 2021.3.18f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

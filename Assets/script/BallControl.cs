@@ -4,34 +4,30 @@ using UnityEngine;
 
 public class BallControl : MonoBehaviour
 {
-    private Rigidbody2D rig;
-    private float startX = 0f;
     public float speed = 6f;
-    private void Start()
+    public Vector2 resetPosition;
+
+    private Rigidbody2D rig;
+
+    private void Start() 
     {
         InitialSpeed();
     }
 
-    private void InitialSpeed()
+        private void InitialSpeed()
     {
         rig = GetComponent<Rigidbody2D>();
-        // bikin sudut random diawal game
+        // random degree
         float randomY = Random.Range(-0.7f, 0.7f);
-        int randomStart = Random.Range(0, 2) * 2 - 1;
+        // random direction
+        float randomStart = Random.Range(0, 2) * 2f - 1f;
         Vector3 initialspeed = new Vector3(randomStart, randomY, 1).normalized * speed;
         rig.velocity = initialspeed;
     }
 
-    private void ResetBall()
+    public void ResetBall()
     {
-        float posY = Random.Range(-3f, 3f);
-        Vector3 position = new Vector3(startX, posY, 1);
-        transform.position = position;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) 
-    {
-        ResetBall();
+        transform.position = new Vector3(resetPosition.x, resetPosition.y, 2);
         InitialSpeed();
     }
 }
