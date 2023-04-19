@@ -4,7 +4,7 @@ Base gameplay
 Ball
 - initial speed = 5
 - can customized speed
-- random degree, y axis, and direction x axis when starting the game
+- random degree, and direction x axis when starting the game
 
 Paddle
 - left = use w and s
