@@ -14,3 +14,7 @@ Paddle
 Wall
 - Bounce
 - reset ball to center when hit wall behind paddle
+
+Power Up Speed
+- Max 2 power up
+- some interval, first one power up will despawn and spawn new one
