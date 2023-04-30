@@ -37,13 +37,15 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\script\GoalControl.cs" />
+     <Compile Include="Assets\script\PUPaddleSpeedUpControl.cs" />
+     <Compile Include="Assets\script\PowerUpManager.cs" />
+     <Compile Include="Assets\script\PUSpeedUpControl.cs" />
      <Compile Include="Assets\script\PaddleControl.cs" />
      <Compile Include="Assets\script\MainMenuControl.cs" />
      <Compile Include="Assets\script\ScoreControl.cs" />
+     <Compile Include="Assets\script\PUPaddleSizeControl.cs" />
      <Compile Include="Assets\script\BallControl.cs" />
      <Compile Include="Assets\script\ScoreManager.cs" />
-     <Compile Include="Assets\script\PUSpeedUpControl.cs" />
-     <Compile Include="Assets\script\PowerUpManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity 2021.3.18f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

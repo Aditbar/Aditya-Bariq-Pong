@@ -9,7 +9,14 @@ public class PaddleControl : MonoBehaviour
     public Rigidbody2D rig;
     public KeyCode upKey;
     public KeyCode downKey;
+    public bool isSpeedUp = false;
+    public bool isLengthen = false;
     // Start is called before the first frame update
+    public static float DefaultSize { get; private set; } = 2.5f;
+    void Awake()
+    {
+    DefaultSize = transform.localScale.y;
+    }
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -51,4 +58,33 @@ private Vector2 GetInput()
     {
         rig.velocity = movement;
     }
+
+    public void IncreasePaddleSize(float magnitude)
+    {
+    Vector3 scale = transform.localScale;
+    scale.y *= magnitude;
+    transform.localScale = scale;
+    }
+
+    public void DecreasePaddleSize(float magnitude)
+    {
+    Vector3 scale = transform.localScale;
+    scale.y /= magnitude;
+    if (PaddleControl.DefaultSize > scale.y) 
+    {
+        scale.y = PaddleControl.DefaultSize;
+    }
+    transform.localScale = scale;
+    }
+
+    public void IncreasePaddleSpeed(int magnitude)
+    {
+        speed *= magnitude;
+    }
+
+    public void DecreasePaddleSpeed(int magnitude)
+    {
+        speed /= magnitude;
+    }
+
 }

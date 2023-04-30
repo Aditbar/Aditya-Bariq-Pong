@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class BallControl : MonoBehaviour
 {
-    public float speed = 6f;
+    public float speed = 10f;
     public Vector2 resetPosition;
 
     private Rigidbody2D rig;
 
+    private Vector2 initialSpeed;
+    
     private void Start() 
     {
         InitialSpeed();
@@ -22,7 +24,7 @@ public class BallControl : MonoBehaviour
         // random direction
         float randomStart = Random.Range(0, 2) * 2f - 1f;
         Vector3 initialspeed = new Vector3(randomStart, randomY, 1).normalized * speed;
-        rig.velocity = initialspeed;
+        rig.velocity = initialSpeed = initialspeed;
     }
 
     public void ResetBall()
@@ -35,4 +37,17 @@ public class BallControl : MonoBehaviour
     {
         rig.velocity *= magnitude;
     }
+
+    public void DeactivatePUSpeedUp(float magnitude)
+    {
+        if (rig.velocity.magnitude < initialSpeed.magnitude)
+        {
+            rig.velocity = initialSpeed;
+        }
+        else
+        {
+            rig.velocity /= magnitude;
+        }
+    }
+    
 }
