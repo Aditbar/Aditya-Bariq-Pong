@@ -16,6 +16,11 @@ Wall
 - reset ball to center when hit wall behind paddle
 (-) the ball may slip
 
+Menu
+- There main menu with play and credit button
+- in game you can easly back to main menu
+- credit back to main menu
+
 Power Up
 - Ball Speed Up (white hexagon)
 - Paddle Speed Up (green circle)
