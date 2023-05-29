@@ -1180,14 +1180,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnArea: {fileID: 550566451}
-  maxPowerUpAmount: 2
-  spawnInterval: 5
+  maxPowerUpAmount: 20
+  spawnInterval: 2
   powerUpAreaMin: {x: -9.5, y: -4}
   powerUpAreaMax: {x: 9.5, y: 4}
   PowerUpTemplateList:
   - {fileID: 2135466616}
-  - {fileID: 833393101}
-  - {fileID: 173804256}
 --- !u!1 &1046795995
 GameObject:
   m_ObjectHideFlags: 0

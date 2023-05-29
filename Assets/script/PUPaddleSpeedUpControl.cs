@@ -10,13 +10,16 @@ public class PUPaddleSpeedUpControl : MonoBehaviour
     public GameObject rightPaddle;
     public int magnitude = 2;
     public int duration = 5;
+    private bool isPowerUpActive = false;
+    private float powerUpTimer = 0;
+    private GameObject targetPaddle;
 
      private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision == ball)
         {
             bool isBallMovingRight = ball.GetComponent<Rigidbody2D>().velocity.x > 0;
-            GameObject targetPaddle = isBallMovingRight ? leftPaddle : rightPaddle;
+            targetPaddle = isBallMovingRight ? leftPaddle : rightPaddle;
 
             if (!targetPaddle.GetComponent<PaddleControl>().isSpeedUp)
             {
@@ -25,23 +28,44 @@ public class PUPaddleSpeedUpControl : MonoBehaviour
                 gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 GetComponent<BoxCollider2D>().enabled = false;
                 StartCoroutine(DeactivatePowerUp(targetPaddle, duration));
+                isPowerUpActive = true;
+                powerUpTimer = duration;
             }
             else
             {
                 manager.RemovePowerUp(gameObject);
-                targetPaddle.GetComponent<PaddleControl>().isSpeedUp = false;
             }
         }
     }
 
     private IEnumerator DeactivatePowerUp(GameObject targetPaddle, int duration)
     {
+        Debug.Log($"{targetPaddle.name} PU Paddle Speed Up activated");
         targetPaddle.GetComponent<PaddleControl>().IncreasePaddleSpeed(magnitude);
         yield return new WaitForSeconds(duration);
         targetPaddle.GetComponent<PaddleControl>().DecreasePaddleSpeed(magnitude);
-        // Debug.Log($"{targetPaddle} ngelambat");
         targetPaddle.GetComponent<PaddleControl>().isSpeedUp = false;
         manager.RemovePowerUp(gameObject);
+        isPowerUpActive = false;
+        Debug.Log($"{targetPaddle.name} PU Paddle Speed Up deactivated");
+    }
+
+    private void Update()
+    {
+        if (isPowerUpActive)
+        {
+            powerUpTimer -= Time.deltaTime;
+
+            if (powerUpTimer <= 0)
+            {
+                // Power up duration has ended
+                isPowerUpActive = false;
+            }
+            else
+            {
+                Debug.Log($"{targetPaddle.name} Speed disappear in: {powerUpTimer:F2} seconds");
+            }
+        }
     }
     
 

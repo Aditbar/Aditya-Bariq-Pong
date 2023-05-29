@@ -5,10 +5,9 @@ using UnityEngine;
 public class BallControl : MonoBehaviour
 {
     public float speed = 10f;
+    public bool isSpeedUp = false;
     public Vector2 resetPosition;
-
     private Rigidbody2D rig;
-
     private Vector2 initialSpeed;
     
     private void Start() 
@@ -31,6 +30,7 @@ public class BallControl : MonoBehaviour
     {
         transform.position = new Vector3(resetPosition.x, resetPosition.y, 2);
         InitialSpeed();
+        isSpeedUp = false;
     }
 
     public void ActivatePUSpeedUp(float magnitude)
@@ -40,13 +40,10 @@ public class BallControl : MonoBehaviour
 
     public void DeactivatePUSpeedUp(float magnitude)
     {
-        if (rig.velocity.magnitude < initialSpeed.magnitude)
-        {
-            rig.velocity = initialSpeed;
-        }
-        else
+        if (isSpeedUp)
         {
             rig.velocity /= magnitude;
+            isSpeedUp = false;
         }
     }
     
